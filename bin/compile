@@ -27,12 +27,12 @@ mkdir -p $BIN_DIR
 
 if [ -f $ENV_DIR/CHROMEDRIVER_VERSION ]; then
   VERSION=$(cat $ENV_DIR/CHROMEDRIVER_VERSION)
-  echo " @@@@@@@@@@@ Specific version requested: $VERSION"
+  echo " @@@@@@@@@@@ Specific version requested: v$VERSION"
 else
   echo " @@@@@@@@@@@ Looking up latest version"
   LATEST="https://chromedriver.storage.googleapis.com/LATEST_RELEASE"
   VERSION=`curl -s $LATEST`
-  echo " @@@@@@@@@@@ Version found: $VERSION"
+  echo " @@@@@@@@@@@ Version found: v$VERSION"
 fi
 indent "Version $VERSION"
 
