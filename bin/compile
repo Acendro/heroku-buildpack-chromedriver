@@ -25,20 +25,23 @@ ENV_DIR=${3:-}
 BIN_DIR=$BUILD_DIR/.chromedriver/bin
 mkdir -p $BIN_DIR
 
+echo ""
+echo ""
 if [ -f $ENV_DIR/CHROMEDRIVER_VERSION ]; then
   VERSION=$(cat $ENV_DIR/CHROMEDRIVER_VERSION)
-  echo " @@@@@@@@@@@ Specific version requested: v$VERSION"
+  echo "      @@@@@@@@@@@ Specific version requested: v$VERSION     @@@@@@@@@@@"
 else
-  echo " @@@@@@@@@@@ Looking up latest version"
+  echo "      @@@@@@@@@@@ Looking up latest version      @@@@@@@@@@@"
   LATEST="https://chromedriver.storage.googleapis.com/LATEST_RELEASE"
   VERSION=`curl -s $LATEST`
-  echo " @@@@@@@@@@@ Version found: v$VERSION"
+  echo "      @@@@@@@@@@@ Version found: v$VERSION      @@@@@@@@@@@"
 fi
 indent "Version $VERSION"
 
 LATEST="https://chromedriver.storage.googleapis.com/LATEST_RELEASE"
 LATESTVERSION=`curl -s $LATEST`
 echo "Chose version: v$VERSION vs latest release: v$LATESTVERSION"
+echo ""
 
 topic "Downloading chromedriver v$VERSION"
 echo "       -----"
@@ -49,6 +52,8 @@ echo $ZIP_URL
 echo "       -----"
 echo "       -----"
 echo "       -----"
+echo ""
+echo ""
 
 ZIP_LOCATION="/tmp/chromedriver.zip"
 curl -s -o $ZIP_LOCATION $ZIP_URL
