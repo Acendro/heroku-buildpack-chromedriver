@@ -36,6 +36,10 @@ else
 fi
 indent "Version $VERSION"
 
+LATEST="https://chromedriver.storage.googleapis.com/LATEST_RELEASE"
+LATESTVERSION=`curl -s $LATEST`
+echo "Chose version: v$VERSION vs latest release: v$LATESTVERSION"
+
 topic "Downloading chromedriver v$VERSION"
 echo "       -----"
 echo "       -----"
